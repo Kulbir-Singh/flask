@@ -15,7 +15,7 @@ function displayImage() {
       cancelBtn.style.display = "inline";
     };
     cancelBtn.onclick = function () {
-      image.src = "";
+      image.src = "/static/placeholder.svg";
       bgImage.src = "";
       cancelBtn.style.display = "none";
     };
