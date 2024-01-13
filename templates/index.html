@@ -3,13 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Image Upload</title>
   </head>
-  <body>
-    <h1>Upload an Image</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <input type="file" name="image" accept="image/*" required />
-      <button type="submit">Upload</button>
+  <body class="bg-black/90 flex h-screen p-20">
+    <form
+      action="/upload"
+      method="post"
+      enctype="multipart/form-data"
+      class="outline-[10px] relative outline-white/80 hover:outline-white outline-dashed outline rounded-xl w-full max-w-[900px] m-auto h-full flex flex-col items-center justify-center text-white"
+    >
+      <span
+        id="cancelButton"
+        class="absolute hover:bg-red-400 outline-[2px] outline-black cursor-pointer hidden top-10 right-10 z-50 bg-red-600 text-slate-100 font-semibold px-4 py-1 rounded-xl"
+        >Cancel</span
+      >
+      <img
+        id="uploadedImage"
+        alt="Uploaded Image"
+        class="mb-20 w-full h-full max-h-[300px] max-w-[300px] object-cover"
+        src="{{ url_for('static', filename='placeholder.svg') }}"
+      />
+      <img
+        id="uploadedBGImage"
+        alt=""
+        class="w-full h-full object-cover absolute opacity-0 z-0"
+      />
+      <label class="text-3xl font-bold w-full h-full absolute" for="image">
+      </label>
+      <div class="flex">
+        <input
+          class="cursor-pointer hidden relative z-50"
+          type="file"
+          name="image"
+          accept="image/*"
+          required
+          placeholder=""
+          id="image"
+          onchange="displayImage()"
+        />
+        <button
+          type="submit"
+          class="relative z-50 px-7 py-2 bg-white rounded-xl hover:bg-white/70 text-black/80 uppercase font-bold tracking-widest"
+        >
+          remove background
+        </button>
+      </div>
     </form>
+    <script src="/static/script.js" type="text/javascript"></script>
   </body>
 </html>
